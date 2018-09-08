@@ -12,32 +12,32 @@ let oInstance = window.axios;
 const config = (opts, instance) => {
     Object.assign(options, opts);
 
-    if(instance) oInstance = instance;
+    if (instance) oInstance = instance;
 }
 
 const adapter = (request) => {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         let _options = null;
 
-		if(request.cacheConfig && request.cacheConfig.maxAge){
+        if (request.cacheConfig && request.cacheConfig.maxAge) {
             _options = Object.assign({}, options, request.cacheConfig);
             const cacheResponse = storage.get(request, _options);
 
-            if(cacheResponse){
+            if (cacheResponse) {
                 cacheResponse.$storage = true;
                 return resolve(cacheResponse);
             }
         }
 
-		oInstance.defaults.adapter
-			.call(this, request)
-			.then(function(response) {
+        oInstance.defaults.adapter
+            .call(this, request)
+            .then(function (response) {
                 _options && storage.set(response.config, _options, response);
 
-				resolve(response);
-			})
-			.catch(reject);
-	});
+                resolve(response);
+            })
+            .catch(reject);
+    });
 }
 
 module.exports = {

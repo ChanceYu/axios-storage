@@ -7,11 +7,11 @@ const path = require('path');
 
 const packageJSON = require('./package.json');
 
-const Config = (outputPath) => {
+const webpackConfig = (outputPath) => {
     let result = {
         entry: path.join(__dirname, 'src/index.js'),
         output: {
-            path: outputPath || path.join(__dirname, 'lib'),
+            path: outputPath,
             filename: 'axios-storage.js',
             library: 'AxiosStorage',
             libraryTarget: 'umd',
@@ -34,11 +34,11 @@ const Config = (outputPath) => {
         },
         plugins: [
             new webpack.BannerPlugin(
-`${packageJSON.name}.js
-version: ${packageJSON.version}
-address: (https://github.com/ChanceYu/axios-storage)
-author: ChanceYu
-Licensed under the MIT license`)
+`${packageJSON.name}
+@version: ${packageJSON.version}
+@homepage: (${packageJSON.homepage})
+@author: ${packageJSON.author}
+@license: ${packageJSON.license}`)
             
         ],
         resolve: {
@@ -60,6 +60,6 @@ Licensed under the MIT license`)
 }
 
 module.exports = [
-    Config(),
-    Config(path.join(__dirname, 'example/static/js'))
+    webpackConfig(path.join(__dirname, 'lib')),
+    webpackConfig(path.join(__dirname, 'example/static/js'))
 ]
