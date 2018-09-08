@@ -4,24 +4,22 @@
 [![Language][img-javascript]][url-github]
 [![License][img-mit]][url-mit]
 
-Caching adapter for axios. [English](./README.md) | [中文](./README-zh.md)
+axios 请求缓存插件 [English](./README.md) | [中文](./README-zh.md)
 
-## Feature
+## 特点
 
-- Support `localStorage`、`sessionStorage`、`memory` mode
-- Support each request to be configured
-- Rerequest when the request parameter is inconsistent with the last request parameter
+- 支持 `localStorage`、`sessionStorage`、`memory` 三种缓存模式
+- 支持配置每个请求的缓存时间和模式
+- 自动处理请求参数不一致的情况，当本次请求和上次请求参数不一致，不使用缓存，而是发送请求
 
 
-## Install
+## 安装
 ```bash
 npm install axios-storage --save
 ```
 
 
-## Usage
-
-You can use the axios-storage directly
+## 使用
 
 ```javascript
 import axios from 'axios';
@@ -29,7 +27,7 @@ import AxiosStorage from 'axios-storage';
 
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
-    storageMode: 'sessionStorage' // global
+    storageMode: 'sessionStorage' // 全局
 }, axios);
 
 const api = axios.create({
@@ -62,7 +60,7 @@ api({
 ```
 
 
-## License
+## 协议
 
 [![license][img-mit]][url-mit]
 

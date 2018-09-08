@@ -1,11 +1,12 @@
 {
   "name": "axios-storage",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "An ajax cache package for axios",
   "main": "lib/axios-storage.js",
   "scripts": {
     "dev": "webpack --watch --config webpack.config --colors",
-    "build": "NODE_ENV=production webpack --config webpack.config --colors"
+    "build": "NODE_ENV=production webpack --config webpack.config --colors",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "axios-storage",
