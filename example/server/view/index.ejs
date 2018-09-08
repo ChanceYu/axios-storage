@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios-storage</title>
+    <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="box">
+        <h2>axios-storage</h2>
+        <p>请求参数：</p>
+        <div class="form-box" id="formBox">
+            <button type="button" id="btnAdd">+</button>
+            <div class="row">
+                <input type="text" placeholder="key" class="key" />
+                <span>=</span>
+                <input type="text" placeholder="value" class="value" />
+                <button type="button" class="btnRemove">-</button>
+            </div>
+        </div>
+        <p>请求地址：</p>
+        <div class="form-box">
+            <select id="selectUrl">
+                <option value="/data">/data</option>
+            </select>
+        </div>
+        <p>返回值：</p>
+        <div class="form-box">
+            <pre><code id="resultValue"></code></pre>
+        </div>
+    
+        <button type="button" id="btnSend">请求数据</button>
+    </div>
+
+    <script src="//cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+    <script src="/js/axios-storage.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
