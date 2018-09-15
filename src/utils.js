@@ -50,6 +50,5 @@ function equals(o1, o2) {
 }
 
 module.exports = {
-    isObject,
     equals
 }

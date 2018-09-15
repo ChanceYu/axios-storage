@@ -1,11 +1,11 @@
 import { CacheFactory } from 'cachefactory';
-
-import utils from './utils';
+import { equals } from './utils';
 
 const cacheFactory = new CacheFactory();
 
 const storage = {
-    getCacheObject(options){
+    cacheFactory,
+    getCache(options){
         let name = options.storageMode;
 
         if(cacheFactory.exists(name)){
@@ -15,31 +15,27 @@ const storage = {
         }
     },
 
-    getCacheKey(config){
+    getKey(config){
         let cacheKey = config.url;
         let method = config.method.toUpperCase();
 
-        cacheKey = `${method}.${cacheKey}`;
-
-        return cacheKey;
+        return `${method}.${cacheKey}`;
     },
 
-    getReqParams(config){
+    getParams(config){
         return config.method.toUpperCase() === 'GET' ? config.params : config.data;
     },
 
-    set(config, options, data){
-        if(!utils.isObject(data)) return;
+    set(response, options){
+        let oCache = this.getCache(options);
+        let cacheKey = this.getKey(response.config);
 
-        let oCache = this.getCacheObject(options);
-        let cacheKey = this.getCacheKey(config);
-        
-        oCache.put(cacheKey, data);
+        oCache.put(cacheKey, response);
     },
 
     get(config, options){
-        let oCache = this.getCacheObject(options);
-        let cacheKey = this.getCacheKey(config);
+        let oCache = this.getCache(options);
+        let cacheKey = this.getKey(config);
         let cacheData = oCache && oCache.get(cacheKey);
         let cacheInfo = oCache && oCache.info(cacheKey);
 
@@ -47,12 +43,11 @@ const storage = {
         if(cacheData && cacheInfo && !cacheInfo.isExpired){
 
             // 判断上传请求参数和本次请求参数是否一致
-            let cacheParams = this.getReqParams(cacheData.config);
-            let params = this.getReqParams(config);
-            if(utils.equals(cacheParams, params)){
+            let cacheParams = this.getParams(cacheData.config);
+            let params = this.getParams(config);
+            if(equals(cacheParams, params)){
                 return cacheData
             }
-            
         }
     }
 };

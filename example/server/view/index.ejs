@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="box">
-        <h2>axios-storage</h2>
+        <h2>axios-storage example</h2>
         <p>请求参数：</p>
         <div class="form-box" id="formBox">
             <button type="button" id="btnAdd">+</button>
@@ -17,13 +17,23 @@
                 <input type="text" placeholder="key" class="key" />
                 <span>=</span>
                 <input type="text" placeholder="value" class="value" />
-                <button type="button" class="btnRemove">-</button>
+                <button type="button" class="remove">-</button>
             </div>
         </div>
         <p>请求地址：</p>
         <div class="form-box">
             <select id="selectUrl">
-                <option value="/data">/data</option>
+                <option value="/data/1">/data/1</option>
+                <option value="/data/2">/data/2</option>
+                <option value="/data/3">/data/3</option>
+            </select>
+        </div>
+        <p>storageMode 缓存模式：</p>
+        <div class="form-box">
+            <select id="selectMode">
+                <option value="sessionStorage">sessionStorage</option>
+                <option value="localStorage">localStorage</option>
+                <option value="memory">memory</option>
             </select>
         </div>
         <p>返回值：</p>
@@ -32,6 +42,8 @@
         </div>
     
         <button type="button" id="btnSend">请求数据</button>
+        <button type="button" class="btn-red" id="btnRemove">清除缓存</button>
+        <button type="button" class="btn-red" id="btnRemoveAll">清除所有缓存</button>
     </div>
 
     <script src="//cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>

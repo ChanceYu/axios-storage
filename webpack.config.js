@@ -4,11 +4,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const webpack = require('webpack');
 const path = require('path');
+const webpackUMDExternal = require('webpack-umd-external');
 
 const packageJSON = require('./package.json');
 
+const libPath = path.join(__dirname, 'lib');
+const staticPath = path.join(__dirname, 'example/static/js');
+
 const webpackConfig = (outputPath) => {
-    let result = {
+    let config = {
         entry: path.join(__dirname, 'src/index.js'),
         output: {
             path: outputPath,
@@ -47,7 +51,7 @@ const webpackConfig = (outputPath) => {
     };
 
     if(isProduction){
-        result.plugins.push(
+        config.plugins.push(
             new webpack.optimize.UglifyJsPlugin({
                 warnings: false,
                 sourceMap: false,
@@ -56,10 +60,16 @@ const webpackConfig = (outputPath) => {
         )
     }
 
-    return result;
+    if(outputPath == libPath){
+        config.externals = webpackUMDExternal({
+            'cachefactory': 'cachefactory'
+        });
+    }
+
+    return config;
 }
 
 module.exports = [
-    webpackConfig(path.join(__dirname, 'lib')),
-    webpackConfig(path.join(__dirname, 'example/static/js'))
+    webpackConfig(libPath),
+    webpackConfig(staticPath)
 ]

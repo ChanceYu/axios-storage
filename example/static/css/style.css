@@ -53,6 +53,10 @@ button:focus{
     padding: 0 10px;
 }
 
+.btn-red{
+    color: red;
+}
+
 #btnAdd{
     position: absolute;
     bottom: 10px;
