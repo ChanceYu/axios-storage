@@ -1,6 +1,6 @@
 /*!
  * axios-storage
- * @version: 1.2.3
+ * @version: 1.2.4
  * @homepage: (https://github.com/ChanceYu/axios-storage#readme)
  * @author: ChanceYu
  * @license: MIT

@@ -68,6 +68,7 @@ api({
 ## AxiosStorage
 All methods
 
+
 * [AxiosStorage](#AxiosStorage)
     * [.config(options, instance)](#AxiosStorage.config)
     * [.adapter()](#AxiosStorage.adapter)
@@ -136,6 +137,18 @@ oCache.get('foo'); // "bar"
 ...
 ```
 
+
+
+## Example
+[example](./example)
+
+```bash
+cd example && npm install
+```
+```bash
+node app.js
+```
+after that，browser open [http://localhost:3000/](http://localhost:3000/)
 
 
 ## Thanks

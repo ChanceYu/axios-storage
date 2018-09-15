@@ -1,6 +1,6 @@
 {
   "name": "axios-storage",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "An ajax cache package for axios",
   "main": "lib/axios-storage.js",
   "scripts": {

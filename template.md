@@ -66,6 +66,18 @@ api({
 #------------include------------#
 
 
+## Example
+[example](./example)
+
+```bash
+cd example && npm install
+```
+```bash
+node app.js
+```
+after that，browser open [http://localhost:3000/](http://localhost:3000/)
+
+
 ## Thanks
 
 [cachefactory](https://www.npmjs.com/package/cachefactory)
