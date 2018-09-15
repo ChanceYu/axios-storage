@@ -68,8 +68,6 @@ api({
 ## AxiosStorage
 All methods
 
-**Kind**: global variable  
-
 * [AxiosStorage](#AxiosStorage)
     * [.config(options, instance)](#AxiosStorage.config)
     * [.adapter()](#AxiosStorage.adapter)
@@ -81,7 +79,6 @@ All methods
 global config options，
 see all [options](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 
-**Kind**: static method of [<code>AxiosStorage</code>](#AxiosStorage)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -106,7 +103,6 @@ AxiosStorage.config({
 ### AxiosStorage.adapter()
 adapter
 
-**Kind**: static method of [<code>AxiosStorage</code>](#AxiosStorage)  
 **Example**  
 ```js
 import axios from 'axios';
@@ -124,12 +120,11 @@ api.post(...)
 ### AxiosStorage.getCache(options) ⇒ <code>object</code>
 Cache Object
 
-**Kind**: static method of [<code>AxiosStorage</code>](#AxiosStorage)  
 **Returns**: <code>object</code> - Cache，see detail [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| options | <code>object</code> |  |  |
+| options | <code>object</code> \| <code>string</code> |  |  |
 | [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | storage mode |
 
 **Example**  

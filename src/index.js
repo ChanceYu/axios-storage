@@ -17,7 +17,6 @@ let AxiosStorage = {
     /**
      * global config options，
      * see all [options]{@link http://www.pseudobry.com/CacheFactory/latest/Cache.html}
-     * 
      * @example
      * import axios from 'axios';
      * import AxiosStorage from 'axios-storage';
@@ -86,7 +85,7 @@ let AxiosStorage = {
      * oCache.get('foo'); // "bar"
      * ...
      * 
-     * @param {object} options
+     * @param {object|string} options
      * @param {string} [options.storageMode=sessionStorage] - storage mode
      * @return {object} Cache，see detail [Cache]{@link http://www.pseudobry.com/CacheFactory/latest/Cache.html}
      */
