@@ -1,6 +1,5 @@
 example
 node_modules
-src
 webpack.config.js
 template.md
 jsdoc2md.js

@@ -10,6 +10,7 @@ const packageJSON = require('./package.json');
 
 const libPath = path.join(__dirname, 'lib');
 const staticPath = path.join(__dirname, 'example/static/js');
+const distPath = path.join(__dirname, 'dist');
 
 const webpackConfig = (outputPath) => {
     let config = {
@@ -71,5 +72,6 @@ const webpackConfig = (outputPath) => {
 
 module.exports = [
     webpackConfig(libPath),
-    webpackConfig(staticPath)
+    webpackConfig(staticPath),
+    webpackConfig(distPath)
 ]

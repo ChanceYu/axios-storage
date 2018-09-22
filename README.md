@@ -15,8 +15,16 @@ Caching adapter for axios.
 
 
 ## Install
+Using npm:
+
 ```bash
 npm install axios-storage --save
+```
+
+Using cdn:
+
+```bash
+<script src="https://unpkg.com/axios-storage/dist/axios-storage.js"></script>
 ```
 
 
