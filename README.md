@@ -75,10 +75,7 @@ api({
 
 <a name="AxiosStorage"></a>
 
-## AxiosStorage
-API
-
-**Kind**: global variable  
+## API
 
 * [AxiosStorage](#AxiosStorage)
     * [.config(options)](#AxiosStorage.config)
