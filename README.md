@@ -131,7 +131,6 @@ api.post(...)
 ### AxiosStorage.getCache(options) ⇒ <code>object</code>
 Cache Object
 
-**Kind**: static method of [<code>AxiosStorage</code>](#AxiosStorage)  
 **Returns**: <code>object</code> - Cache，see detail [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
 
 | Param | Type | Default | Description |

@@ -23,7 +23,7 @@ npm install axios-storage --save
 
 Using cdn:
 
-```bash
+```html
 <script src="https://unpkg.com/axios-storage/dist/axios-storage.js"></script>
 ```
 
@@ -36,9 +36,11 @@ You can use the axios-storage directly
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
 
+// global
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
-    storageMode: 'sessionStorage' // global
+    storageMode: 'sessionStorage',
+    maxAge: 120 * 60 * 1000
 });
 
 const api = axios.create({

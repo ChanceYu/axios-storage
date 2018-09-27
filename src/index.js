@@ -81,7 +81,7 @@ let AxiosStorage = {
      * oCache.get('foo'); // "bar"
      * ...
      * 
-     * // request data
+     * // request data with cacheConfig
      * api({
      *   method: 'GET',
      *   url: '/data/other',
@@ -95,7 +95,7 @@ let AxiosStorage = {
      * })
      * 
      * // get this request cache
-     * let res = oCache.get('GET./data/other') // is the same result above
+     * let res = oCache.get('GET./data/other') // `res` is the same as above
      * 
      * oCache.get('[method].[url]') // `method` is uppercase, GET、POST .etc
      * 
