@@ -1,3 +1,4 @@
+import axios from 'axios';
 import storage from './storage';
 
 let defaultOptions = {
@@ -8,10 +9,8 @@ let defaultOptions = {
 
 let globalOptions = Object.assign({}, defaultOptions);
 
-let axiosInstance = window.axios;
-
 /**
- * All methods
+ * API
  */
 let AxiosStorage = {
     /**
@@ -24,18 +23,15 @@ let AxiosStorage = {
      * AxiosStorage.config({
      *   storagePrefix: 'axios-storage-example:',
      *   storageMode: 'sessionStorage'
-     * }, axios);
+     * });
      * 
      * @param {object} options
      * @param {string} [options.storagePrefix=axios-storage] - thhe prefix of storage
      * @param {string} [options.storageMode=sessionStorage] - the mode of storage，support `localStorage`、`sessionStorage`、`memory`
      * @param {string} [options.deleteOnExpire=aggressive] - how to handler expired storage
-     * @param {object} instance=window.axios - axios object
      */
-    config(options, instance){
+    config(options){
         Object.assign(globalOptions, options);
-    
-        if (instance) axiosInstance = instance;
     },
     /**
      * adapter
@@ -65,7 +61,7 @@ let AxiosStorage = {
                 }
             }
     
-            axiosInstance.defaults.adapter
+            axios.defaults.adapter
                 .call(this, requestConfig)
                 .then((response) => {
                     options && storage.set(response, options);
@@ -84,6 +80,24 @@ let AxiosStorage = {
      * oCache.put('foo', 'bar');
      * oCache.get('foo'); // "bar"
      * ...
+     * 
+     * // request data
+     * api({
+     *   method: 'GET',
+     *   url: '/data/other',
+     *   cacheConfig: {
+     *     maxAge: 60 * 60 * 1000,
+     *     storageMode: 'localStorage'
+     *   }
+     * })
+     * .then((res) => {
+     *    console.log(res)
+     * })
+     * 
+     * // get this request cache
+     * let res = oCache.get('GET./data/other') // is the same result above
+     * 
+     * oCache.get('[method].[url]') // `method` is uppercase, GET、POST .etc
      * 
      * @param {object|string} options
      * @param {string} [options.storageMode=sessionStorage] - storage mode

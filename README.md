@@ -23,7 +23,7 @@ npm install axios-storage --save
 
 Using cdn:
 
-```bash
+```html
 <script src="https://unpkg.com/axios-storage/dist/axios-storage.js"></script>
 ```
 
@@ -36,10 +36,12 @@ You can use the axios-storage directly
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
 
+// global
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
-    storageMode: 'sessionStorage' // global
-}, axios);
+    storageMode: 'sessionStorage',
+    maxAge: 120 * 60 * 1000
+});
 
 const api = axios.create({
     adapter: AxiosStorage.adapter
@@ -74,17 +76,18 @@ api({
 <a name="AxiosStorage"></a>
 
 ## AxiosStorage
-All methods
+API
 
+**Kind**: global variable  
 
 * [AxiosStorage](#AxiosStorage)
-    * [.config(options, instance)](#AxiosStorage.config)
+    * [.config(options)](#AxiosStorage.config)
     * [.adapter()](#AxiosStorage.adapter)
     * [.getCache(options)](#AxiosStorage.getCache) ⇒ <code>object</code>
 
 <a name="AxiosStorage.config"></a>
 
-### AxiosStorage.config(options, instance)
+### AxiosStorage.config(options)
 global config options，
 see all [options](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 
@@ -95,7 +98,6 @@ see all [options](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 | [options.storagePrefix] | <code>string</code> | <code>&quot;axios-storage&quot;</code> | thhe prefix of storage |
 | [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | the mode of storage，support `localStorage`、`sessionStorage`、`memory` |
 | [options.deleteOnExpire] | <code>string</code> | <code>&quot;aggressive&quot;</code> | how to handler expired storage |
-| instance | <code>object</code> | <code>window.axios</code> | axios object |
 
 **Example**  
 ```js
@@ -105,7 +107,7 @@ import AxiosStorage from 'axios-storage';
 AxiosStorage.config({
   storagePrefix: 'axios-storage-example:',
   storageMode: 'sessionStorage'
-}, axios);
+});
 ```
 <a name="AxiosStorage.adapter"></a>
 
@@ -129,6 +131,7 @@ api.post(...)
 ### AxiosStorage.getCache(options) ⇒ <code>object</code>
 Cache Object
 
+**Kind**: static method of [<code>AxiosStorage</code>](#AxiosStorage)  
 **Returns**: <code>object</code> - Cache，see detail [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
 
 | Param | Type | Default | Description |
@@ -143,6 +146,24 @@ let oCache = AxiosStorage.getCache('localStorage');
 oCache.put('foo', 'bar');
 oCache.get('foo'); // "bar"
 ...
+
+// request data with cacheConfig
+api({
+  method: 'GET',
+  url: '/data/other',
+  cacheConfig: {
+    maxAge: 60 * 60 * 1000,
+    storageMode: 'localStorage'
+  }
+})
+.then((res) => {
+   console.log(res)
+})
+
+// get this request cache
+let res = oCache.get('GET./data/other') // `res` is the same as above
+
+oCache.get('[method].[url]') // `method` is uppercase, GET、POST .etc
 ```
 
 

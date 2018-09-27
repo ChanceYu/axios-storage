@@ -39,7 +39,7 @@ import AxiosStorage from 'axios-storage';
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
     storageMode: 'sessionStorage' // global
-}, axios);
+});
 
 const api = axios.create({
     adapter: AxiosStorage.adapter

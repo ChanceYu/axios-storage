@@ -63,8 +63,13 @@ const webpackConfig = (outputPath) => {
 
     if(outputPath == libPath){
         config.externals = webpackUMDExternal({
-            'cachefactory': 'cachefactory'
+          'axios': 'axios',
+          'cachefactory': 'cachefactory',
         });
+    }else{
+      config.externals = webpackUMDExternal({
+        'axios': 'axios'
+      });
     }
 
     return config;
