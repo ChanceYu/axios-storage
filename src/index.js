@@ -51,7 +51,7 @@ let AxiosStorage = {
         return new Promise(function (resolve, reject) {
             let options = null;
     
-            if (requestConfig.cacheConfig && requestConfig.cacheConfig.maxAge) {
+            if (requestConfig.cacheConfig) {
                 options = Object.assign({}, globalOptions, requestConfig.cacheConfig);
                 const cacheResponse = storage.get(requestConfig, options);
     
