@@ -36,7 +36,7 @@ You can use the axios-storage directly
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
 
-// global
+// set global config
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
     storageMode: 'sessionStorage',
@@ -66,6 +66,16 @@ api({
         maxAge: 60 * 60 * 1000,
         storageMode: 'localStorage'
     }
+})
+.then(function(res){
+    console.log(res);
+})
+
+// or use global config
+api({
+    method: 'get',
+    url: '/data/other',
+    cacheConfig: true
 })
 .then(function(res){
     console.log(res);
