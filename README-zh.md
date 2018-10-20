@@ -96,7 +96,7 @@ api({
 
 ### AxiosStorage.config(options)
 全局配置参数，
-查看所有参数 [详情](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
+查看所有参数[详情](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 
 
 | Param | Type | Default | Description |
