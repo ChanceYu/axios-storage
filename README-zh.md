@@ -7,38 +7,36 @@
 
 [English](./README.md) | [中文](./README-zh.md)
 
-Caching adapter for axios.
+axios 库请求缓存插件
 
-## Feature
+## 特点
 
-- Support `localStorage`、`sessionStorage`、`memory` mode
-- Support each request to be configured
-- Rerequest when the request parameter is inconsistent with the last request parameter
+- 支持 `localStorage`、`sessionStorage`、`memory` 三种模式
+- 支持每个请求单独配置
+- 如果本次请求参数和上次的不一致，那么不使用缓存，而是会重新发起请求
 
 
-## Install
-Using npm:
+## 安装
+使用 npm:
 
 ```bash
 npm install axios-storage --save
 ```
 
-Using cdn:
+使用 cdn:
 
 ```html
 <script src="https://unpkg.com/axios-storage/dist/axios-storage.js"></script>
 ```
 
 
-## Usage
-
-You can use the axios-storage directly
+## 使用
 
 ```javascript
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
 
-// set global config
+// 全局配置
 AxiosStorage.config({
     storagePrefix: 'axios-storage',
     storageMode: 'sessionStorage',
@@ -73,7 +71,7 @@ api({
     console.log(res);
 })
 
-// or use global config
+// 使用全局配置
 api({
     method: 'get',
     url: '/data/other',
@@ -97,18 +95,18 @@ api({
 <a name="AxiosStorage.config"></a>
 
 ### AxiosStorage.config(options)
-global config options，
-see all [options](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
+全局配置参数，
+查看所有参数 [详情](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | options | <code>object</code> |  |  |
-| [options.storagePrefix] | <code>string</code> | <code>&quot;axios-storage&quot;</code> | thhe prefix of storage |
-| [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | the mode of storage，support `localStorage`、`sessionStorage`、`memory` |
-| [options.deleteOnExpire] | <code>string</code> | <code>&quot;aggressive&quot;</code> | how to handler expired storage |
+| [options.storagePrefix] | <code>string</code> | <code>&quot;axios-storage&quot;</code> | storage 缓存前缀 |
+| [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | 缓存模式，支持 `localStorage`、`sessionStorage`、`memory` |
+| [options.deleteOnExpire] | <code>string</code> | <code>&quot;aggressive&quot;</code> | 如何处理过期的缓存，默认过期就会删除 |
 
-**Example**  
+**示例**  
 ```js
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
@@ -121,9 +119,9 @@ AxiosStorage.config({
 <a name="AxiosStorage.adapter"></a>
 
 ### AxiosStorage.adapter()
-adapter
+适配器
 
-**Example**  
+**示例**  
 ```js
 import axios from 'axios';
 import AxiosStorage from 'axios-storage';
@@ -138,16 +136,16 @@ api.post(...)
 <a name="AxiosStorage.getCache"></a>
 
 ### AxiosStorage.getCache(options) ⇒ <code>object</code>
-Cache Object
+缓存对象
 
-**Returns**: <code>object</code> - Cache，see detail [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
+**Returns**: <code>object</code> - Cache，查看详情 [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | options | <code>object</code> \| <code>string</code> |  |  |
-| [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | storage mode |
+| [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | 缓存模式 |
 
-**Example**  
+**示例**  
 ```js
 let oCache = AxiosStorage.getCache('localStorage');
 
@@ -155,7 +153,7 @@ oCache.put('foo', 'bar');
 oCache.get('foo'); // "bar"
 ...
 
-// request data with cacheConfig
+// 配置cacheConfig
 api({
   method: 'GET',
   url: '/data/other',
@@ -168,15 +166,15 @@ api({
    console.log(res)
 })
 
-// get this request cache
-let res = oCache.get('GET./data/other') // `res` is the same as above
+// 获取请求的缓存
+let res = oCache.get('GET./data/other') // `res` 和上面的 `res` 结果一样
 
-oCache.get('[method].[url]') // `method` is uppercase, GET、POST etc.
+oCache.get('[method].[url]') // `method` 是大写, GET、POST 等
 ```
 
 
 
-## Example
+## 示例
 [example](./example)
 
 ```bash
@@ -185,15 +183,15 @@ cd example && npm install
 ```bash
 node app.js
 ```
-after that，browser open [http://localhost:3000/](http://localhost:3000/)
+安装和启动之后，浏览器打开 [http://localhost:3000/](http://localhost:3000/) 就可以查看
 
 
-## Thanks
+## 感谢
 
 [cachefactory](https://www.npmjs.com/package/cachefactory)
 
 
-## License
+## 协议
 
 [![license][img-mit]][url-mit]
 
