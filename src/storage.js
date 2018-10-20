@@ -39,10 +39,10 @@ const storage = {
         let cacheData = oCache && oCache.get(cacheKey);
         let cacheInfo = oCache && oCache.info(cacheKey);
 
-        // 判断是否有缓存，并且是否过期
+        // if exist cache and cache is not expired
         if(cacheData && cacheInfo && !cacheInfo.isExpired){
 
-            // 判断上传请求参数和本次请求参数是否一致
+            // compare the request params between cache and current
             let cacheParams = this.getParams(cacheData.config);
             let params = this.getParams(config);
             if(equals(cacheParams, params)){
