@@ -99,7 +99,7 @@ api({
 查看所有参数[详情](http://www.pseudobry.com/CacheFactory/latest/Cache.html)
 
 
-| Param | Type | Default | Description |
+| 参数 | 类型 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | options | <code>object</code> |  |  |
 | [options.storagePrefix] | <code>string</code> | <code>&quot;axios-storage&quot;</code> | storage 缓存前缀 |
@@ -140,7 +140,7 @@ api.post(...)
 
 **Returns**: <code>object</code> - Cache，查看详情 [Cache](http://www.pseudobry.com/CacheFactory/latest/Cache.html)  
 
-| Param | Type | Default | Description |
+| 参数 | 类型 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | options | <code>object</code> \| <code>string</code> |  |  |
 | [options.storageMode] | <code>string</code> | <code>&quot;sessionStorage&quot;</code> | 缓存模式 |
